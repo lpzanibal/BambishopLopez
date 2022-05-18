@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -115,10 +116,13 @@ const NavBar = () => {
             </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-          <Button sx={{ my: 2, color: "white", display: "block" }}>
+          <Box sx={{ flexGrow: 0, display: "flex", flexDirection: "row" }}>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
               Login
             </Button>
+            <Box sx={{ my: 2 }}>
+              <CartWidget />
+            </Box>
           </Box>
         </Toolbar>
       </Container>
