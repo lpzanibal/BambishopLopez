@@ -26,7 +26,7 @@ const ItemCount = ({ item, stock, initial, onAdd }) => {
   };
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 300 }}>
       <CardContent>
         <Typography variant="body1">
           {item}

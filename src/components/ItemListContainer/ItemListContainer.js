@@ -7,7 +7,7 @@ const ItemListContainer = (props) => {
 
   const addToCart = (count) => {
     setItem({ ...item, stock: item.stock - count });
-    alert(`${count} productos añadidos al carrito`);
+    alert(`${count} items añadidos al carrito`);
   };
 
   return (
