@@ -1,15 +1,27 @@
 import React from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#eeeeee",
+    },
+  },
+});
+
 function App() {
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <NavBar />
-      <ItemListContainer greeting="Hola!!! :D" />
-    </React.Fragment>
+      <Container maxWidth="lg">
+        <ItemListContainer />
+      </Container>
+    </ThemeProvider>
   );
 }
 
