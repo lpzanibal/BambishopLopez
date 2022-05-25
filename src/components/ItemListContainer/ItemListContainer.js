@@ -1,32 +1,17 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import ItemCount from "../ItemCount/ItemCount";
+import React, { useState, useEffect } from "react";
+import ItemList from "../ItemList/ItemList";
+import { getProducts } from "../../asyncmock";
 
 const ItemListContainer = (props) => {
-  const [item, setItem] = useState({ name: "iPhone 12", stock: 5, initial: 1 });
+  const [products, setProducts] = useState([]);
 
-  const addToCart = (count) => {
-    setItem({ ...item, stock: item.stock - count });
-    alert(`${count} items añadidos al carrito`);
-  };
+  useEffect(() => {
+    getProducts().then((response) => {
+      setProducts(response);
+    });
+  }, []);
 
-  return (
-    <Box
-      sx={{
-        margin: 1,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-      }}
-    >
-      <ItemCount
-        item={item.name}
-        stock={item.stock}
-        initial={item.initial}
-        onAdd={(count) => addToCart(count)}
-      />
-    </Box>
-  );
+  return <ItemList products={products} />;
 };
 
 export default ItemListContainer;
