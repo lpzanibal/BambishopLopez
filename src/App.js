@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 
 const theme = createTheme({
   palette: {
@@ -19,7 +20,8 @@ function App() {
       <CssBaseline />
       <NavBar />
       <Container maxWidth="lg">
-        <ItemListContainer />
+        {/*<ItemListContainer />*/}
+        <ItemDetailContainer />
       </Container>
     </ThemeProvider>
   );
