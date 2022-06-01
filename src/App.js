@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
@@ -16,14 +17,28 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <NavBar />
-      <Container maxWidth="lg">
-        {/*<ItemListContainer />*/}
-        <ItemDetailContainer />
-      </Container>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar />
+        <Container maxWidth="lg">
+          <Routes>
+            <Route exact path="/" element={<ItemListContainer />} />
+            <Route
+              exact
+              path="/category/:categoryId"
+              element={<ItemListContainer />}
+            />
+            <Route
+              exact
+              path="/detail/:productId"
+              element={<ItemDetailContainer />}
+            />
+            <Route path="*" element={<h1>PAGE NOT FOUND 404</h1>} />
+          </Routes>
+        </Container>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

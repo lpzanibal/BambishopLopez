@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -27,6 +28,8 @@ const NavBar = () => {
       <Container maxWidth="100%">
         <Toolbar disableGutters>
           <Typography
+            component={Link}
+            to="/"
             variant="h6"
             noWrap
             sx={{
@@ -97,22 +100,28 @@ const NavBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
+              component={Link}
+              to="/category/celular"
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              Notebooks
+              Celulares
             </Button>
             <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Computadoras
-            </Button>
-            <Button
+              component={Link}
+              to="/category/tablet"
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
               Tablets
+            </Button>
+            <Button
+              component={Link}
+              to="/category/notebook"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Notebooks
             </Button>
           </Box>
 
