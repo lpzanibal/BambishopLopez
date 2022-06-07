@@ -34,6 +34,7 @@ function App() {
               path="/detail/:productId"
               element={<ItemDetailContainer />}
             />
+            <Route exact path="/cart" element={<h1>CARRITO DE COMPRAS</h1>} />
             <Route path="*" element={<h1>PAGE NOT FOUND 404</h1>} />
           </Routes>
         </Container>

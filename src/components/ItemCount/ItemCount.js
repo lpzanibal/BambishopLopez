@@ -13,16 +13,11 @@ const ItemCount = ({ item, stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
 
   const decrement = () => {
-    setCount(count - 1);
+    if (count > 1) setCount(count - 1);
   };
 
   const increment = () => {
-    setCount(count + 1);
-  };
-
-  const add = () => {
-    setCount(initial);
-    onAdd(count);
+    if (count < stock) setCount(count + 1);
   };
 
   return (
@@ -62,7 +57,7 @@ const ItemCount = ({ item, stock, initial, onAdd }) => {
         <Button
           variant="outlined"
           startIcon={<AddShoppingCartIcon />}
-          onClick={add}
+          onClick={() => onAdd(count)}
           disabled={count === 0 || stock === 0}
           fullWidth
         >

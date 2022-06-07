@@ -1,11 +1,19 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = (props) => {
   const { product } = props;
+  const [quantity, setQuantity] = useState(0);
+
+  const handleOnAdd = (count) => {
+    setQuantity(count);
+  };
 
   return (
     <Card sx={{ margin: 1 }}>
@@ -32,6 +40,15 @@ const ItemDetail = (props) => {
                   <Typography variant="caption" color="text.secondary">
                     {`stock: ${product.stock}`}
                   </Typography>
+                  {quantity > 0 ? (
+                    <Link to="/cart">Terminar compra</Link>
+                  ) : (
+                    <ItemCount
+                      stock={product.stock}
+                      initial={0}
+                      onAdd={handleOnAdd}
+                    />
+                  )}
                 </Stack>
               </Grid>
             </>
