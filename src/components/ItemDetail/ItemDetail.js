@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -6,13 +6,23 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ItemCount from "../ItemCount/ItemCount";
+import CartContext from "../../context/CartContext";
 
 const ItemDetail = (props) => {
   const { product } = props;
   const [quantity, setQuantity] = useState(0);
 
+  const { addItem, getProduct } = useContext(CartContext);
+
   const handleOnAdd = (count) => {
     setQuantity(count);
+    const item = {
+      id: product.id,
+      name: product.title,
+      price: product.price,
+      quantity: count,
+    };
+    addItem(item);
   };
 
   return (
@@ -45,7 +55,7 @@ const ItemDetail = (props) => {
                   ) : (
                     <ItemCount
                       stock={product.stock}
-                      initial={0}
+                      initial={getProduct(product.id)?.quantity ?? 0}
                       onAdd={handleOnAdd}
                     />
                   )}
