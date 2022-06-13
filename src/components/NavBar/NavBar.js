@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -11,9 +11,14 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import CartWidget from "../CartWidget/CartWidget";
+import CartContext from "../../context/CartContext";
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+
+  const { getTotal } = useContext(CartContext);
+
+  const total = getTotal();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -129,9 +134,7 @@ const NavBar = () => {
             {/*<Button sx={{ my: 2, color: "white", display: "block" }}>
               Login
           </Button>**/}
-            <Box sx={{ my: 2 }}>
-              <CartWidget />
-            </Box>
+            <Box sx={{ my: 2 }}>{total > 0 && <CartWidget />}</Box>
           </Box>
         </Toolbar>
       </Container>
