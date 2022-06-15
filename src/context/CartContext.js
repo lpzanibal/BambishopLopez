@@ -46,7 +46,7 @@ export const CartContextProvider = ({ children }) => {
     setItems(newCart);
   };
 
-  const getTotal = () => {
+  const getTotalQuantity = () => {
     return items.length;
   };
 
@@ -71,7 +71,7 @@ export const CartContextProvider = ({ children }) => {
         getQuantity,
         getProduct,
         removeItem,
-        getTotal,
+        getTotalQuantity,
         removeAll,
         getTotalPrice,
       }}

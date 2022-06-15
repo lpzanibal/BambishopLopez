@@ -12,9 +12,9 @@ import Button from "@mui/material/Button";
 
 const Cart = () => {
   const { items, removeItem } = useContext(CartContext);
-  const { getTotal, removeAll, getTotalPrice } = useContext(CartContext);
+  const { getTotalQuantity, removeAll, getTotalPrice } = useContext(CartContext);
 
-  const total = getTotal();
+  const total = getTotalQuantity();
   const totalPrice = getTotalPrice();
 
   return (

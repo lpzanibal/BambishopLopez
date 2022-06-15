@@ -16,9 +16,9 @@ import CartContext from "../../context/CartContext";
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
-  const { getTotal } = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContext);
 
-  const total = getTotal();
+  const total = getTotalQuantity();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

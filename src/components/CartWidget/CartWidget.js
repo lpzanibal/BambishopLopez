@@ -6,9 +6,9 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const CartWidget = () => {
-  const { getTotal } = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContext);
 
-  const total = getTotal();
+  const total = getTotalQuantity();
   return (
     <Badge badgeContent={total} color="error">
       <IconButton component={Link} to="/cart">
