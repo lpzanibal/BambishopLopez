@@ -12,7 +12,8 @@ import Button from "@mui/material/Button";
 
 const Cart = () => {
   const { items, removeItem } = useContext(CartContext);
-  const { getTotalQuantity, removeAll, getTotalPrice } = useContext(CartContext);
+  const { getTotalQuantity, removeAll, getTotalPrice } =
+    useContext(CartContext);
 
   const total = getTotalQuantity();
   const totalPrice = getTotalPrice();
@@ -67,7 +68,14 @@ const Cart = () => {
             <Grid container justifyContent="flex-end" sx={{ mb: 1 }}>
               <Typography variant="body2">Total: ${totalPrice}</Typography>
             </Grid>
-            <Button size="large" variant="contained">COMPRAR CARRITO</Button>
+            <Button
+              size="large"
+              variant="contained"
+              component={Link}
+              to="/order"
+            >
+              COMPRAR CARRITO
+            </Button>
           </>
         ) : (
           <>
